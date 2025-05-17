@@ -6,6 +6,8 @@ const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const SESSION_SECRET = process.env.SESSION_SECRET || 'voting-app-secret';
 
 // Set up EJS as the view engine
 app.set('view engine', 'ejs');
@@ -15,10 +17,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-    secret: 'voting-app-secret',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // set to true if using https
+    cookie: {
+        secure: NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
 }));
 
 // In-memory data store
@@ -146,10 +151,12 @@ app.get('/logout', (req, res) => {
 });
 
 // Export the list of valid codes for admin reference
-app.get('/admin-codes', (req, res) => {
-    // In a real app, this would need proper authentication
-    res.json({ validCodes });
-});
+// In production, this would need proper authentication
+if (NODE_ENV === 'development') {
+    app.get('/admin-codes', (req, res) => {
+        res.json({ validCodes });
+    });
+}
 
 // Start the server
 app.listen(PORT, () => {
