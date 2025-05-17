@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f7f9fb;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #3498db;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.pin-icon {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 36px;
+    color: #3498db;
+}
+
+.pin-description {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.pin-display {
+    position: relative;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 8px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+input[type="password"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    outline: none;
+}
+
+input[type="password"]::placeholder {
+    letter-spacing: normal;
+    color: #95a5a6;
+}
+
+.pin-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.pin-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 8px;
+    transition: all 0.2s ease;
+}
+
+.pin-dot.filled {
+    background-color: #3498db;
+    transform: scale(1.1);
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    color: #e74c3c;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+}
+
+.option-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.option-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.option-card label {
+    display: flex;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.option-details {
+    margin-left: 15px;
+    flex: 1;
+}
+
+.option-details h3 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.option-details p {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.results {
+    margin-top: 20px;
+}
+
+.result-item {
+    margin-bottom: 20px;
+}
+
+.result-label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.result-bar-container {
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-bar {
+    height: 100%;
+    background-color: #3498db;
+    transition: width 0.5s ease-in-out;
+}
+
+.result-count {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.total-votes {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+.success-message {
+    text-align: center;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    text-align: center;
+}
+
+.footer-links a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}

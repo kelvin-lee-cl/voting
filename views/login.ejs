@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Voting - Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Anonymous Voting</h1>
+        <div class="card">
+            <div class="pin-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Login with your PIN code</h2>
+            <p class="pin-description">Enter your 4-character code (2 letters and 2 numbers)</p>
+            <% if (locals.error) { %>
+                <p class="error">
+                    <%= error %>
+                </p>
+                <% } %>
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <div class="pin-display">
+                                <input type="password" name="pin" id="pin-input" maxlength="4"
+                                    placeholder="Enter PIN Code" required autocomplete="off"
+                                    style="text-transform: uppercase;">
+                                <div class="pin-dots">
+                                    <span class="pin-dot" id="dot-1"></span>
+                                    <span class="pin-dot" id="dot-2"></span>
+                                    <span class="pin-dot" id="dot-3"></span>
+                                    <span class="pin-dot" id="dot-4"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+        </div>
+    </div>
+
+    <script>
+        // Visual feedback for PIN input
+        const pinInput = document.getElementById('pin-input');
+        const pinDots = document.querySelectorAll('.pin-dot');
+
+        pinInput.addEventListener('input', function () {
+            // Convert to uppercase automatically
+            this.value = this.value.toUpperCase();
+
+            const length = this.value.length;
+
+            // Update dots to show how many characters have been entered
+            pinDots.forEach((dot, index) => {
+                if (index < length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

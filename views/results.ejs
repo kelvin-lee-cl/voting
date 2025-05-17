@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Voting - Results</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Voting Results</h1>
+        <div class="card">
+            <h2>Current Standings</h2>
+            <div class="results">
+                <div class="result-item">
+                    <div class="result-label">Google Meet (~$100/person)</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar"
+                            style="width: <%= (votes['Google Meet'] === 0 && votes['Zoom'] === 0) ? '0%' : Math.round((votes['Google Meet'] / (votes['Google Meet'] + votes['Zoom'])) * 100) + '%' %>">
+                        </div>
+                        <span class="result-count">
+                            <%= votes['Google Meet'] %> votes
+                        </span>
+                    </div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Zoom (free)</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar"
+                            style="width: <%= (votes['Google Meet'] === 0 && votes['Zoom'] === 0) ? '0%' : Math.round((votes['Zoom'] / (votes['Google Meet'] + votes['Zoom'])) * 100) + '%' %>">
+                        </div>
+                        <span class="result-count">
+                            <%= votes['Zoom'] %> votes
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="total-votes">
+                Total votes: <%= votes['Google Meet'] + votes['Zoom'] %>
+            </div>
+        </div>
+        <p class="success-message">Thanks for voting! Your vote has been recorded.</p>
+        <div class="footer-links">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>
